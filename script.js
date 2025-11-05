@@ -8,6 +8,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
+
     const humanDecision = prompt('Enter your choice:');
 
     return humanDecision;
@@ -15,6 +16,7 @@ function getHumanChoice() {
 
 let humanScore = 0;
 let computerScore = 0;
+let numberOfTies = 0;
 
 function playRound(humanChoice, computerChoice) {
 
@@ -25,13 +27,17 @@ function playRound(humanChoice, computerChoice) {
     if (humanChoice === 'rock') {
 
         if (computerChoice === 'paper') { 
-            console.log('You lose! Paper beats Rock!')
-            computerScore++
+
+            computerScore++;
+            return 'You lose! Paper beats Rock!';
+            
          } 
 
         else { 
-            console.log('You win! Rock beats Scissors!')
-            humanScore++
+
+              humanScore++;
+              return 'You win! Rock beats Scissors!';
+          
          }
         
 
@@ -40,48 +46,62 @@ function playRound(humanChoice, computerChoice) {
     else if (humanChoice === 'paper') {
 
          if (computerChoice === 'scissors') { 
-            console.log('You lose! Scissors beats Paper!')
-            computerScore++
+
+            computerScore++;
+            return 'You lose! Scissors beats Paper!';
+            
          } 
 
         else { 
-            console.log('You win! Paper beats Rock!')
-            humanScore++
+            
+            humanScore++;
+            return 'You win! Paper beats Rock!';
          }
 
     }
 
     else {
+
         if (computerChoice === 'rock') { 
-            console.log('You lose! Rock beats Scissors!')
-            computerScore++
+           
+            computerScore++;
+            return 'You lose! Rock beats Scissors!';
          } 
 
         else { 
-            console.log('You win! Scissors beats Paper!')
-            humanScore++
+            
+            humanScore++;
+            return 'You win! Scissors beats Paper!';
          }
     }
 
 }
 
 else {
-    console.log('Its a tie')
+
+    numberOfTies++;
+    return 'Its a tie';
 }
 
-// console.log('Human score : ' + humanScore + ' , Computer score : ' + computerScore)
-
-
 }
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 function playGame() {
+
+    let computerSelection;
+    let humanSelection;
+
     for (let i = 0; i < 5; i++) {
-        playRound(humanSelection, computerSelection)
-        getHumanChoice()
+        
+        computerSelection = getComputerChoice();
+        humanSelection = getHumanChoice();
+        console.log(`Computer choice : ${computerSelection}, Your choice : ${humanSelection} - ${playRound(humanSelection, computerSelection)}`);
+       
     }
+
+    const winnerMessage = computerScore > humanScore ? 'Computer wins!' : humanScore > computerScore ? 'You win!' : 'Its a tie!';
+
+    console.log(`Computer score: ${computerScore}, Your score: ${humanScore}, Ties - ${numberOfTies} : ${winnerMessage}`);
 }
 
-playGame()
+playGame();
+
