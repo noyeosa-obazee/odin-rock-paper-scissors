@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-    </style>
-    <script src="script.js" defer></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
-</head>
-<body>
-   <button id="rock-btn">Rock</button>
-   <button id="paper-btn">Paper</button>
-   <button id="scissors-btn">Scissors</button>
-   <h2 id= "result"></h2>
-   <p id="choices"></p>
-   <p id="scores"></p>
-   <p id="final-result"></p>
-   
-</body>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="game-container">
+      <h1>Rock Paper Scissors</h1>
+
+      <div class="score-board">
+        <div class="score-box">
+          <span id="human-score-display">0</span>
+          <p>You</p>
+        </div>
+        <div class="score-box">
+          <span id="computer-score-display">0</span>
+          <p>Computer</p>
+        </div>
+      </div>
+
+      <h2 id="result">Choose your weapon!</h2>
+
+      <div class="choices-container">
+        <button id="rock-btn" class="game-btn">
+          <span class="emoji">🪨</span> Rock
+        </button>
+        <button id="paper-btn" class="game-btn">
+          <span class="emoji">📄</span> Paper
+        </button>
+        <button id="scissors-btn" class="game-btn">
+          <span class="emoji">✂️</span> Scissors
+        </button>
+      </div>
+
+      <p id="choices" class="details-text">First to 5 points wins!</p>
+
+      <p id="scores" style="display: none"></p>
+
+      <div id="final-result-container" class="hidden">
+        <div class="modal-content">
+          <p id="final-result"></p>
+          <button id="restart-btn" onclick="location.reload()">
+            Play Again
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
